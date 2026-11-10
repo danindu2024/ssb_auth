@@ -1,0 +1,5 @@
+# If the subdomain's document root is this folder (not ./public), serve ONLY ./public.
+# Preferred setup: point the subdomain's document root at ssb_auth/public instead.
+RewriteEngine On
+RewriteRule ^public/ - [L]
+RewriteRule ^(.*)$ public/$1 [L]

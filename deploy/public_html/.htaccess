@@ -1,0 +1,23 @@
+# ssbmanagement.lk (main domain) - put this file in public_html.
+#
+# Apache applies a .htaccess in public_html to EVERY folder below it too (including the folders the
+# subdomains point at), so every rule here is limited to the main domain's own host name.
+Options -Indexes
+RewriteEngine On
+
+# 1. https only, one canonical host name (main domain and www)
+RewriteCond %{HTTP_HOST} ^(www\.)?ssbmanagement\.lk$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://ssbmanagement.lk%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.ssbmanagement\.lk$ [NC]
+RewriteRule ^ https://ssbmanagement.lk%{REQUEST_URI} [R=301,L]
+
+# 2. allow only: the front controller, the assets, and the certificate-renewal path
+RewriteCond %{HTTP_HOST} ^ssbmanagement\.lk$ [NC]
+RewriteRule ^(index\.php|assets/.+|\.well-known/.+)$ - [L]
+
+# 3. everything else on the main domain goes to the application, which answers 404 for unknown pages.
+#    This also stops the subdomain folders inside public_html (fundflow..., mpcs...) being reachable
+#    through the main domain as ssbmanagement.lk/<folder>/...
+RewriteCond %{HTTP_HOST} ^ssbmanagement\.lk$ [NC]
+RewriteRule ^ index.php [L]

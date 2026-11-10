@@ -1,0 +1,31 @@
+# Secrets / local config (upload by hand, never commit)
+/config/config.php
+.env
+.env.*
+!.env.example
+
+# Runtime data
+/storage/sessions/*
+!/storage/sessions/.gitkeep
+/storage/*.log
+*.log
+
+# Database dumps and backups
+*.sql.bak
+*.dump
+/database/*.local.sql
+
+# Dependencies / tooling
+/vendor/
+/node_modules/
+.phpunit.result.cache
+
+# Editors, OS, AI tooling
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.claude/
+.clinerules
