@@ -1,0 +1,163 @@
+:root{--bg:#f6f7f9;--fg:#1b1f24;--muted:#5b6672;--card:#fff;--line:#d9dee4;--accent:#1d5fd1;--ok:#17703a;--err:#b42318;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{--bg:#14171b;--fg:#e8ebee;--muted:#9aa5b1;--card:#1d2127;--line:#323a43;--accent:#6ea0ff;--ok:#5fcf8a;--err:#ff8b80;--warn:#f0c060}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.top{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center}
+main{max-width:1000px;margin:24px auto;padding:0 16px}
+h1{font-size:1.5rem;margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;margin:0 0 16px}
+.narrow{max-width:420px;margin:48px auto}
+.muted{color:var(--muted)}.small{font-size:.875rem}
+label{display:block;margin:16px 0 4px;font-weight:500}
+label.check{display:flex;gap:8px;align-items:center;font-weight:400;margin:8px 0}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit}
+input[type=checkbox]{width:auto}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button,.btn{display:inline-block;margin-top:16px;padding:10px 16px;border:0;border-radius:6px;background:var(--accent);color:#fff;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+@media (prefers-color-scheme:dark){button,.btn{color:#0b1220}}
+.card form>button{width:100%}
+.row{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between}
+.row button,.row .btn{margin-top:0;width:auto!important}
+form.inline{display:inline}
+button.link{background:none;color:var(--accent);padding:0;margin:0;font-weight:400;text-decoration:underline;width:auto!important}
+fieldset{border:1px solid var(--line);border-radius:6px;margin:16px 0 0;padding:8px 12px}
+.flash{padding:10px 12px;border-radius:6px;border:1px solid var(--line);margin:0 0 16px}
+.flash.err{border-color:var(--err);color:var(--err)}.flash.ok{border-color:var(--ok);color:var(--ok)}.flash.warn{border-color:var(--warn);color:var(--warn)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--line)}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:.9rem}
+.actions{white-space:nowrap}.actions>*{margin-right:12px}
+.badge{display:inline-block;padding:0 8px;border:1px solid var(--line);border-radius:10px;font-size:.75rem}
+.badge.ok{color:var(--ok);border-color:var(--ok)}.badge.off{color:var(--err);border-color:var(--err)}
+dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:8px 16px}dl.kv dd{margin:0;word-break:break-all}
+code{font-family:ui-monospace,Menlo,Consolas,monospace}
+
+/* ---- branded public pages (sign-in, applications, password, errors) ---------------------------------------- */
+body.brand{
+  color:#fff;min-height:100vh;display:flex;flex-direction:column;background-color:#0a2540;
+  background-image:linear-gradient(rgba(6,24,44,.35),rgba(6,24,44,.55)),url('/assets/background.svg');
+  background-size:cover;background-position:center;background-attachment:fixed;
+}
+.brand .top{background:transparent;border-bottom:0}
+.brand .brand-link,.brand nav a,.brand button.link{color:#fff}
+.plain .brand-link{color:var(--fg);font-weight:600;text-decoration:none}
+.brand .brand-link{font-weight:600;text-decoration:none}
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 16px;width:100%}
+.hero .logo{width:124px;height:124px;border-radius:50%;background:#fff;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.35);margin:8px 0 16px}
+.hero .logo img{width:100%;height:100%;object-fit:contain;border-radius:50%;display:block}
+.company{margin:0 0 24px;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero-title{font-size:1.6rem;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.brand .muted{color:rgba(255,255,255,.85)}
+/* the white card keeps a light palette on the dark photo, whatever the OS theme */
+.brand .card{--bg:#f6f7f9;--fg:#1b1f24;--muted:#5b6672;--card:#fff;--line:#d9dee4;--accent:#1d5fd1;--ok:#17703a;--err:#b42318;--warn:#8a5a00;
+  color:var(--fg);text-align:left;width:100%;box-shadow:0 14px 32px rgba(0,0,0,.38)}
+.brand .card h1{font-size:1.35rem}
+.brand .card .muted{color:var(--muted)}
+.brand .card button,.brand .card .btn{color:#fff}
+.brand .flash{background:#fff;color:var(--fg);width:100%;max-width:420px}
+.brand .flash.err{color:var(--err)}.brand .flash.ok{color:var(--ok)}.brand .flash.warn{color:var(--warn)}
+.foot{padding:16px;text-align:center;font-size:.9rem;color:rgba(255,255,255,.75)}
+ul.tiles{list-style:none;padding:0;margin:40px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:28px 56px}
+.app{display:flex;flex-direction:column;align-items:center;gap:16px;width:180px;color:#fff;text-decoration:none}
+.circle{width:140px;height:140px;border-radius:50%;background:#fff;color:var(--c);border:8px solid var(--c);display:grid;place-items:center;
+  box-shadow:0 14px 32px rgba(0,0,0,.38);transition:transform .2s ease,box-shadow .2s ease}
+.circle b{font-size:1.8rem;letter-spacing:1px}
+.app:hover .circle{transform:translateY(-6px) scale(1.04);box-shadow:0 20px 40px rgba(0,0,0,.45),0 0 0 9px rgba(255,255,255,.18)}
+.app:focus-visible{outline:none}.app:focus-visible .circle{outline:3px solid #fff;outline-offset:6px}
+.app-name{font-size:1.25rem;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:reduce){.circle{transition:none}.app:hover .circle{transform:none}}
+
+/* per-app accent colours (classes, because the CSP forbids inline style attributes) */
+.c0{--c:#2f7bbf}.c1{--c:#1d8a4b}.c2{--c:#b5651d}.c3{--c:#7a4fb5}.c4{--c:#b02a4a}.c5{--c:#2a8f9a}
+.hero .logo{width:104px;height:104px;margin:0 0 12px}
+.company{margin:0 0 20px}
+
+/* ---- fit the branded pages in one screen (logo/title scale with the window height) -------------------------- */
+.brand .top{padding:8px 16px}
+.hero{justify-content:center;padding:4px 16px 8px}
+.hero .logo{width:clamp(56px,13vh,104px);height:clamp(56px,13vh,104px);padding:clamp(4px,1vh,8px);margin:0 0 clamp(6px,1.6vh,12px)}
+.company{font-size:clamp(1.25rem,4.6vh,2.4rem);margin:0 0 clamp(8px,2.2vh,20px)}
+.brand .narrow{margin:0 auto}
+.brand .card{padding:clamp(14px,2.6vh,22px) 24px}
+.brand .card h1{margin:0 0 2px;font-size:1.25rem}
+.brand .card p{margin:4px 0}
+.brand .card label{margin:clamp(6px,1.4vh,12px) 0 4px}
+.brand .card input{padding:clamp(6px,1.2vh,10px) 12px}
+.brand .card form>button{margin-top:clamp(10px,1.8vh,16px);padding:clamp(8px,1.3vh,10px) 16px}
+.brand .card .small{font-size:.8rem}
+.hero-title{margin:0;font-size:clamp(1.2rem,3.6vh,1.6rem)}
+.hero .muted{margin:4px 0 0}
+ul.tiles{margin:clamp(12px,3vh,32px) 0 0}
+.circle{width:clamp(96px,18vh,140px);height:clamp(96px,18vh,140px);border-width:clamp(5px,1vh,8px)}
+.foot{padding:6px 16px}
+@media (max-height:700px){.foot{display:none}.brand .top{padding:6px 16px}}
+.hero{padding-top:0;padding-bottom:4px}
+@media (max-width:520px){.app{width:130px}ul.tiles{gap:20px 16px}.app-name{font-size:1.05rem}}
+
+/* ======================= sign-in form (Pattern: Form / auth) ===============================================
+   Weights 400/500/600 only; 16px inputs; 8-point spacing; same navy canvas, white card, blue accent. */
+:root{--font-regular:400;--font-medium:500;--font-semibold:600}
+h1,h2,h3{font-weight:var(--font-semibold);line-height:1.2}
+.company,.app-name,.circle b,.brand-link,.hero-title{font-weight:var(--font-semibold)}
+.brand .brand-link{display:none}
+.brand .top:has(nav) .brand-link{display:inline}
+
+.brand .auth-card{max-width:416px;margin:0 auto;padding:clamp(16px,3vh,32px) clamp(20px,4vw,32px);
+  border:1px solid rgba(255,255,255,.22);border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.28)}
+.brand .auth-card h1{font-size:1.5rem;margin:0 0 clamp(8px,2vh,16px);letter-spacing:-.01em;text-align:center}
+.brand .auth-card .field{margin:0 0 clamp(8px,2vh,16px)}
+.brand .auth-card label{display:block;margin:0 0 4px;font-size:.875rem;font-weight:var(--font-medium);color:var(--fg)}
+.brand .auth-card input{display:block;width:100%;min-height:clamp(40px,6.2vh,48px);padding:8px 12px;font-size:1rem;line-height:1.5;
+  color:var(--fg);background:#fff;border:1px solid #8b96a3;border-radius:8px}
+.brand .auth-card input:hover{border-color:#5b6672}
+.brand .auth-card input:focus,.brand .auth-card input:focus-visible{outline:none;border-color:var(--accent)}
+.brand .auth-card input[aria-invalid="true"],.brand .auth-card input[aria-invalid="true"]:focus{border-color:var(--err);background:#fffbfa}
+.brand .auth-card .pw{position:relative}
+.brand .auth-card .pw input{padding-right:48px}
+.pw-toggle{position:absolute;top:50%;right:4px;transform:translateY(-50%);margin:0!important;padding:0!important;width:40px!important;height:40px;
+  display:grid!important;place-items:center;background:none!important;color:#5b6672!important;border:0;border-radius:6px;cursor:pointer}
+.pw-toggle:hover{color:var(--accent)!important}
+.pw-toggle svg[hidden]{display:none}
+.pw-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:0}
+.field-error{margin:4px 0 0;font-size:.875rem;line-height:1.5;color:var(--err)}
+.field-hint{margin:4px 0 0;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.form-alert{margin:0 0 clamp(8px,2vh,16px);padding:12px 16px;border:1px solid var(--err);border-radius:8px;
+  background:#fef3f2;color:#912018;font-size:.875rem;line-height:1.5}
+.btn-submit{display:flex!important;align-items:center;justify-content:center;gap:8px;width:100%!important;min-height:clamp(40px,6.2vh,48px);
+  margin:clamp(12px,3vh,24px) 0 0!important;padding:8px 16px!important;background:var(--accent)!important;color:#fff!important;
+  border:0;border-radius:8px;font-size:1rem;font-weight:var(--font-semibold);cursor:pointer}
+.btn-submit:hover{background:#1850b0!important}
+.btn-submit:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-submit.is-loading{cursor:progress}
+.btn-submit.is-loading::before{content:"";width:16px;height:16px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.btn-submit.is-loading::before{animation:none}}
+.brand .auth-card .help{margin:clamp(8px,2vh,16px) 0 0;font-size:.875rem;line-height:1.5;color:var(--muted);text-align:center}
+@media (max-height:600px){.brand .auth-card .help{margin-top:8px}}
+.brandmark{display:flex;flex-direction:column;align-items:center}
+/* logo always sits above the system name; size scales with window height */
+.brandmark .logo{width:clamp(72px,21vh,184px);height:clamp(72px,21vh,184px);padding:clamp(5px,1.2vh,10px);margin:0 0 clamp(6px,1.4vh,12px)}
+.brandmark .company{font-size:clamp(1.2rem,4.4vh,2.4rem);margin:0 0 clamp(8px,2vh,20px)}
+
+/* ---- signed-in user bar (branded pages): name + sign out, right-aligned ------------------------------------ */
+.brand .top:has(.userbar){justify-content:flex-end;padding:12px clamp(16px,3vw,32px)}
+.userbar{display:flex;align-items:center;gap:16px;min-width:0;max-width:100%}
+.userbar-user{display:flex;align-items:center;gap:8px;min-width:0;color:#fff;font-size:.9375rem;font-weight:var(--font-medium)}
+.avatar{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.35);font-size:.875rem;font-weight:var(--font-semibold)}
+.userbar-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:min(32ch,40vw)}
+.userbar-admin{color:#fff;font-size:.9375rem;text-decoration:none;padding:8px 4px}
+.userbar-admin:hover{text-decoration:underline}
+.brand .userbar .signout{margin:0!important;width:auto!important;min-height:40px;padding:8px 18px!important;background:#1d5fd1!important;
+  color:#fff!important;border:0;border-radius:8px;font-size:.9375rem;font-weight:var(--font-semibold);cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.brand .userbar .signout:hover{background:#1850b0!important}
+.brand .userbar .signout:focus-visible,.userbar-admin:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:480px){.userbar{gap:8px}.userbar-name{max-width:34vw}}
+
+/* app tile with a picture instead of initials */
+.circle.has-img{overflow:hidden;padding:0}
+.circle.has-img img{width:100%;height:100%;object-fit:contain;padding:2%;transform:scale(1.15);display:block;border-radius:50%}
+.circle.has-img.img-mpcs img{object-fit:cover;object-position:50% 40%;padding:0;transform:none}  /* photo: fill the ring */
